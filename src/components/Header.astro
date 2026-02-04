@@ -4,6 +4,16 @@ import ThemeToggle from "./ThemeToggle.astro";
 const links = [
   { name: "Skills", href: "#skills" },
   { name: "Experience", href: "#experience" },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/saim-sohail-584a6521a/",
+    external: true,
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/devsaimsohail",
+    external: true,
+  },
 ];
 ---
 
@@ -14,13 +24,21 @@ const links = [
         {
           links.map((link) => (
             <li>
-              <a href={link.href}>{link.name}</a>
+              <a
+                href={link.href}
+                target={link.external ? "_blank" : "_self"}
+                rel={link.external ? "noopener noreferrer" : ""}
+              >
+                {link.name}
+              </a>
             </li>
           ))
         }
       </ul>
     </nav>
-    <ThemeToggle />
+    <div class="right-section">
+      <ThemeToggle />
+    </div>
   </div>
 </header>
 
@@ -39,6 +57,12 @@ const links = [
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .right-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
   }
 
   .logo {
