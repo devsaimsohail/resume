@@ -3,8 +3,9 @@ import ThemeToggle from "./ThemeToggle.astro";
 // Redeploy trigger
 
 const links = [
-  { name: "Skills", href: "#skills" },
-  { name: "Experience", href: "#experience" },
+  { name: "Skills", href: "/#skills" },
+  { name: "Experience", href: "/#experience" },
+  { name: "Portfolio", href: "/portfolio" },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/saim-sohail-584a6521a/",
@@ -20,6 +21,13 @@ const links = [
 
 <header class="header glass">
   <div class="container header-content">
+    <div class="left-section">
+      <button class="menu-btn" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
     <nav>
       <ul class="nav-links">
         {
@@ -41,7 +49,65 @@ const links = [
       <ThemeToggle />
     </div>
   </div>
+  <div class="mobile-backdrop"></div>
+  <div class="mobile-menu">
+    <nav>
+      <ul class="mobile-nav-links">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                target={link.external ? "_blank" : "_self"}
+                rel={link.external ? "noopener noreferrer" : ""}
+                class="mobile-link"
+              >
+                {link.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
 </header>
+
+<script>
+  const menuBtn = document.querySelector(".menu-btn");
+  const mobileMenu = document.querySelector(".mobile-menu");
+  const mobileBackdrop = document.querySelector(".mobile-backdrop");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
+
+  function closeMenu() {
+    menuBtn?.classList.remove("open");
+    mobileMenu?.classList.remove("open");
+    mobileBackdrop?.classList.remove("open");
+    document.body.classList.remove("no-scroll");
+  }
+
+  function openMenu() {
+    menuBtn?.classList.add("open");
+    mobileMenu?.classList.add("open");
+    mobileBackdrop?.classList.add("open");
+    document.body.classList.add("no-scroll");
+  }
+
+  if (menuBtn && mobileMenu && mobileBackdrop) {
+    menuBtn.addEventListener("click", () => {
+      if (mobileMenu.classList.contains("open")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    mobileBackdrop.addEventListener("click", closeMenu);
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+  }
+</script>
 
 <style>
   .header {
@@ -58,6 +124,10 @@ const links = [
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .left-section {
+    display: none;
   }
 
   .right-section {
@@ -90,9 +160,123 @@ const links = [
     color: var(--primary-color);
   }
 
+  .menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+  }
+
+  .bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: all 0.3s ease;
+  }
+
+  .mobile-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .mobile-backdrop.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    max-width: 80vw;
+    height: 100vh;
+    background: var(--bg-color);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 6rem 2rem 2rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+  }
+
+  [data-theme="dark"] .mobile-menu {
+    background: rgba(20, 20, 30, 0.98);
+    border-left: 1px solid var(--glass-border);
+  }
+
+  [data-theme="light"] .mobile-menu {
+    background: rgba(255, 255, 255, 0.98);
+    border-left: 1px solid var(--glass-border);
+  }
+
+  .mobile-menu.open {
+    transform: translateX(0);
+  }
+
+  .mobile-nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .mobile-nav-links a {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    display: block;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-nav-links a:hover {
+    color: var(--primary-color);
+    padding-left: 0.5rem;
+  }
+
+  /* Hamburger Animation */
+  .menu-btn.open .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .menu-btn.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-btn.open .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+  /* Utility for locking scroll */
+  :global(body.no-scroll) {
+    overflow: hidden;
+  }
+
   @media (max-width: 768px) {
     .nav-links {
-      display: none; /* Mobile menu to be added if needed */
+      display: none;
+    }
+
+    .left-section {
+      display: flex;
+    }
+
+    .menu-btn {
+      display: flex;
     }
   }
 </style>
