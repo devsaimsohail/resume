@@ -1,0 +1,73 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+
+const links = [
+  { name: "Skills", href: "#skills" },
+  { name: "Experience", href: "#experience" },
+];
+---
+
+<header class="header glass">
+  <div class="container header-content">
+    <nav>
+      <ul class="nav-links">
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.href}>{link.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <ThemeToggle />
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    letter-spacing: -0.5px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-color);
+    opacity: 0.8;
+  }
+
+  .nav-links a:hover {
+    opacity: 1;
+    color: var(--primary-color);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none; /* Mobile menu to be added if needed */
+    }
+  }
+</style>

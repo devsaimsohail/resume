@@ -1,0 +1,23 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer>
+  <div class="container footer-content">
+    <p>&copy; {currentYear} Resume Portfolio. Built with Astro.</p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    padding: 2rem 0;
+    border-top: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .footer-content {
+    text-align: center;
+    color: #a1a1aa;
+    font-size: 0.875rem;
+  }
+</style>

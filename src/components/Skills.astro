@@ -1,0 +1,240 @@
+---
+const skillCategories = [
+  {
+    title: "Frontend",
+    skills: [
+      {
+        name: "JavaScript",
+        icon: "devicon-javascript-plain",
+        level: "Advanced",
+      },
+      {
+        name: "TypeScript",
+        icon: "devicon-typescript-plain",
+        level: "Advanced",
+      },
+      { name: "React", icon: "devicon-react-original", level: "Expert" },
+      { name: "Vue.js", icon: "devicon-vuejs-plain", level: "Intermediate" },
+      { name: "Astro", icon: "devicon-astro-plain", level: "Advanced" },
+      {
+        name: "Tailwind",
+        icon: "devicon-tailwindcss-original",
+        level: "Expert",
+      },
+    ],
+  },
+  {
+    title: "Backend",
+    skills: [
+      { name: "Node.js", icon: "devicon-nodejs-plain", level: "Advanced" },
+      { name: "Express", icon: "devicon-express-original", level: "Advanced" },
+      { name: "Ruby on Rails", icon: "devicon-rails-plain", level: "Advanced" },
+      { name: "NestJS", icon: "devicon-nestjs-plain", level: "Advanced" },
+      { name: "Python", icon: "devicon-python-plain", level: "Intermediate" },
+    ],
+  },
+  {
+    title: "Databases",
+    skills: [
+      {
+        name: "PostgreSQL",
+        icon: "devicon-postgresql-plain",
+        level: "Advanced",
+      },
+      { name: "MongoDB", icon: "devicon-mongodb-plain", level: "Advanced" },
+      { name: "Redis", icon: "devicon-redis-plain", level: "Intermediate" },
+    ],
+  },
+  {
+    title: "Cloud & DevOps",
+    skills: [
+      {
+        name: "AWS",
+        icon: "devicon-amazonwebservices-plain-wordmark",
+        level: "Expert",
+      },
+      {
+        name: "Google Cloud",
+        icon: "devicon-googlecloud-plain",
+        level: "Intermediate",
+      },
+      {
+        name: "Azure",
+        icon: "devicon-azure-plain",
+        level: "Intermediate",
+      },
+      { name: "Docker", icon: "devicon-docker-plain", level: "Advanced" },
+      {
+        name: "Kubernetes",
+        icon: "devicon-kubernetes-plain",
+        level: "Intermediate",
+      },
+      { name: "Nginx", icon: "devicon-nginx-original", level: "Intermediate" },
+    ],
+  },
+  {
+    title: "Tools & Testing",
+    skills: [
+      { name: "Git", icon: "devicon-git-plain", level: "Expert" },
+      { name: "Figma", icon: "devicon-figma-plain", level: "Intermediate" },
+      { name: "Jest", icon: "devicon-jest-plain", level: "Advanced" },
+      { name: "RSpec", icon: "devicon-rspec-original", level: "Advanced" },
+      { name: "Postman", icon: "devicon-postman-plain", level: "Expert" },
+    ],
+  },
+];
+
+const getLevelColor = (level: string) => {
+  switch (level) {
+    case "Expert":
+      return "var(--primary-color)";
+    case "Advanced":
+      return "var(--secondary-color)";
+    case "Intermediate":
+      return "var(--accent-color)";
+    case "Beginner":
+      return "var(--text-muted)";
+    default:
+      return "var(--text-muted)";
+  }
+};
+---
+
+<section id="skills" class="section skills">
+  <div class="container">
+    <h2 class="section-title">Skills & Technologies</h2>
+
+    <div class="categories-wrapper">
+      {
+        skillCategories.map((category) => (
+          <div class="category-block">
+            <h3 class="category-title">{category.title}</h3>
+            <div class="skills-grid">
+              {category.skills.map((skill) => (
+                <div class="skill-card">
+                  <div class="icon-wrapper">
+                    <i class={`${skill.icon} colored`} />
+                  </div>
+                  <div class="skill-info">
+                    <p class="skill-name">{skill.name}</p>
+                    <span
+                      class="skill-level"
+                      style={`--level-color: ${getLevelColor(skill.level)}`}
+                    >
+                      {skill.level}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: var(--text-color);
+  }
+
+  .categories-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .category-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    border-left: 4px solid var(--secondary-color);
+    padding-left: 1rem;
+    display: inline-block;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    cursor: default;
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    height: 100%;
+    min-height: 180px;
+  }
+
+  .skill-card:hover {
+    transform: translateY(-5px);
+    background: var(--glass-bg);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+  }
+
+  .icon-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    /* color: var(--secondary-color); Removed to show original brand colors */
+    transition: transform 0.3s ease;
+  }
+
+  .skill-card:hover .icon-wrapper {
+    /* color: var(--primary-color); Removed to show original brand colors */
+    transform: scale(1.1);
+  }
+
+  .skill-info {
+    text-align: center;
+    width: 100%;
+  }
+
+  .skill-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-level {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.85rem;
+    border-radius: 50px; /* Fully rounded pill */
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--level-color);
+    color: var(--level-color);
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  :global([data-theme="light"]) .skill-level {
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .skill-card:hover .skill-level {
+    background: var(--level-color);
+    color: white; /* Inverted text on hover */
+    /* border-color already matches */
+  }
+</style>

@@ -1,0 +1,207 @@
+---
+const experiences = [
+  {
+    company: "Devsloop",
+    link: "https://devslooptech.com/",
+    role: "Full Stack Engineer",
+    period: "2021 - Present",
+    description: [
+      "I build scalable web applications with a strong focus on backend architecture, clean APIs, and reliable databases, while delivering smooth and responsive user experiences.",
+      "I’ve led small teams, collaborated with cross-functional stakeholders, and actively engage in programming competitions, technical talks, and knowledge-sharing events such as TED-style sessions.",
+    ],
+  },
+  {
+    company: "Xinc | Tokyo | Remote",
+    role: "Sr. Software Engineer",
+    period: "6 months (Part-time)",
+    description: [
+      "Spearheaded the integration of ChatGPT APIs to build an intelligent chatbot, significantly enhancing user engagement. Focused on deep performance optimization and architectural improvements to ensure scalability.",
+      "Played a key leadership role by conducting rigorous code reviews and mentoring junior developers, fostering a culture of technical excellence and continuous improvement within the engineering team.",
+    ],
+  },
+  {
+    company: "GIFT University",
+    role: "Software Engineer | Coordinator",
+    period: "2019 - 2020",
+    description: [
+      "Led the end-to-end design and development of three comprehensive dashboards customized for various academic stakeholders. Facilitated extensive requirements gathering sessions with program coordinators to align technical solutions with university needs.",
+      "Managed and mentored a team of four students throughout the entire software development lifecycle, ensuring successful delivery of projects while providing technical guidance and project management oversight.",
+    ],
+  },
+];
+---
+
+<section id="experience" class="section experience">
+  <div class="container">
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+      {
+        experiences.map((exp, index) => (
+          <div class="timeline-item">
+            <div class="timeline-dot" />
+            <div class="timeline-content glass">
+              <span class="period">{exp.period}</span>
+              <h3 class="role">{exp.role}</h3>
+              {exp.link ? (
+                <a href={exp.link} target="_blank" class="company company-link">
+                  {exp.company}
+                </a>
+              ) : (
+                <h4 class="company">{exp.company}</h4>
+              )}
+              <div class="description-container">
+                {exp.description.map((item) => (
+                  <p class="description-text">{item}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      var(--primary-color),
+      var(--secondary-color)
+    );
+    opacity: 0.3;
+  }
+
+  .timeline-item {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 3rem;
+    position: relative;
+  }
+
+  /* Alternating layout could be added here, keeping it centered for mobile friendliness first */
+
+  .timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    border: 4px solid var(--bg-color);
+    z-index: 1;
+    box-shadow: 0 0 10px var(--primary-color);
+  }
+
+  .timeline-content {
+    width: 45%;
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    position: relative;
+    transition: transform 0.3s ease;
+    border: 1px solid transparent; /* Prepare for hover border */
+  }
+
+  .timeline-content:hover {
+    transform: translateY(-5px);
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+  }
+
+  /* Right Side */
+  .timeline-item:nth-child(even) .timeline-content {
+    margin-left: 55%;
+  }
+
+  /* Left Side */
+  .timeline-item:nth-child(odd) .timeline-content {
+    margin-right: 55%;
+    text-align: right;
+  }
+
+  .period {
+    color: var(--secondary-color);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .role {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+    color: var(--text-color);
+  }
+
+  .company {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .company-link {
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .company-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+
+  .description-container {
+    margin-top: 0.5rem;
+  }
+
+  .description-text {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .timeline::before {
+      left: 20px;
+    }
+
+    .timeline-dot {
+      left: 20px;
+    }
+
+    .timeline-item {
+      justify-content: flex-start;
+      padding-left: 50px;
+    }
+
+    .timeline-content {
+      width: 100%;
+      margin: 0 !important;
+      text-align: left !important;
+    }
+  }
+</style>
