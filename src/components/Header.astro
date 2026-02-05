@@ -3,9 +3,15 @@ import ThemeToggle from "./ThemeToggle.astro";
 // Redeploy trigger
 
 const links = [
+  { name: "Quick Intro", href: "/" },
   { name: "Skills", href: "/#skills" },
   { name: "Experience", href: "/#experience" },
-  { name: "Portfolio", href: "/portfolio" },
+  {
+    name: "Download Resume",
+    href: "/saimsohail-resume-26.pdf",
+    download: true,
+    primary: true,
+  },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/saim-sohail-584a6521a/",
@@ -37,6 +43,8 @@ const links = [
                 href={link.href}
                 target={link.external ? "_blank" : "_self"}
                 rel={link.external ? "noopener noreferrer" : ""}
+                download={link.download || undefined}
+                class={link.primary ? "primary-link" : ""}
               >
                 {link.name}
               </a>
@@ -60,7 +68,10 @@ const links = [
                 href={link.href}
                 target={link.external ? "_blank" : "_self"}
                 rel={link.external ? "noopener noreferrer" : ""}
-                class="mobile-link"
+                download={link.download || undefined}
+                class={
+                  link.primary ? "mobile-link primary-link" : "mobile-link"
+                }
               >
                 {link.name}
               </a>
@@ -160,6 +171,20 @@ const links = [
     color: var(--primary-color);
   }
 
+  .nav-links a.primary-link {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-full);
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links a.primary-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+  }
+
   .menu-btn {
     display: none;
     flex-direction: column;
@@ -246,6 +271,20 @@ const links = [
   .mobile-nav-links a:hover {
     color: var(--primary-color);
     padding-left: 0.5rem;
+  }
+
+  .mobile-nav-links a.primary-link {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-full);
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .mobile-nav-links a.primary-link:hover {
+    padding-left: 1.5rem;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
   }
 
   /* Hamburger Animation */

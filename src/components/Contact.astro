@@ -11,29 +11,111 @@
         opportunities. If you have an idea or just want to say hi, send me a
         message!
       </p>
-      <a href="mailto:iamsaimsohail@gmail.com" class="email-link"
-        >iamsaimsohail@gmail.com</a
-      >
 
-      <div class="socials">
+      <div class="contact-methods">
+        <a href="mailto:iamsaimsohail@gmail.com" class="contact-card glass">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+            ></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <div>
+            <h3 class="contact-method-title">Email Me</h3>
+            <p class="contact-method-text">iamsaimsohail@gmail.com</p>
+          </div>
+        </a>
+
         <a
           href="https://www.linkedin.com/in/saim-sohail-584a6521a/"
-          class="social-link">LinkedIn</a
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-card glass"
         >
-        <a href="https://github.com/devsaimsohail" class="social-link">GitHub</a
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+            ></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+          <div>
+            <h3 class="contact-method-title">Connect on LinkedIn</h3>
+            <p class="contact-method-text">Let's connect professionally</p>
+          </div>
+        </a>
+
+        <a
+          href="https://github.com/devsaimsohail"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-card glass"
         >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+            ></path>
+          </svg>
+          <div>
+            <h3 class="contact-method-title">View My Code</h3>
+            <p class="contact-method-text">Check out my projects on GitHub</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="cta-footer">
+        <a href="/saimsohail-resume-26.pdf" download class="btn btn-primary">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download My Resume
+        </a>
       </div>
     </div>
   </div>
 </section>
 
 <style>
+  .contact {
+    background: var(--section-bg);
+  }
+
   .contact-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
   }
 
@@ -52,7 +134,7 @@
 
   .contact-desc {
     color: var(--text-muted);
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     font-size: 1.125rem;
     max-width: 600px;
     margin-left: auto;
@@ -60,29 +142,90 @@
     text-align: center;
   }
 
-  .email-link {
-    display: inline-block;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 2rem;
-  }
-
-  .socials {
-    display: flex;
+  .contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
-    justify-content: center;
+    width: 100%;
+    margin-bottom: 3rem;
   }
 
-  .social-link {
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+    text-align: left;
+    background: var(--card-bg);
+  }
+
+  .contact-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+  }
+
+  .contact-card svg {
+    color: var(--primary-color);
+    flex-shrink: 0;
+  }
+
+  .contact-method-title {
+    font-size: 1.125rem;
+    font-weight: 600;
     color: var(--text-color);
-    font-weight: 500;
-    border-bottom: 1px solid transparent;
-    padding-bottom: 2px;
+    margin-bottom: 0.25rem;
   }
 
-  .social-link:hover {
-    color: var(--secondary-color);
-    border-color: var(--secondary-color);
+  .contact-method-text {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .cta-footer {
+    margin-top: 1rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 1.125rem;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.6);
+  }
+
+  .btn svg {
+    transition: transform 0.3s ease;
+  }
+
+  .btn:hover svg {
+    transform: translateY(2px);
+  }
+
+  @media (max-width: 768px) {
+    .contact-methods {
+      grid-template-columns: 1fr;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+    }
   }
 </style>

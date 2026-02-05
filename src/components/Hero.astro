@@ -1,10 +1,11 @@
 ---
-
+import AvailabilityBadge from "./AvailabilityBadge.astro";
 ---
 
 <section class="section hero">
   <div class="container hero-content">
     <div class="hero-text">
+      <AvailabilityBadge />
       <h2 class="greeting">
         Hello, I'm <span class="gradient-text">Saim Sohail</span>
       </h2>
@@ -16,6 +17,23 @@
       </p>
       <div class="cta-group">
         <a href="#contact" class="btn btn-primary">Let's Talk</a>
+        <a href="/saimsohail-resume-26.pdf" download class="btn btn-secondary">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download Resume
+        </a>
         <a href="#experience" class="btn btn-outline">View Work</a>
       </div>
     </div>
@@ -49,6 +67,7 @@
     font-size: 1.5rem;
     margin-bottom: 1rem;
     font-weight: 600;
+    margin-top: 1rem;
   }
 
   .title {
@@ -69,6 +88,7 @@
   .cta-group {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
   }
 
   .btn {
@@ -77,6 +97,17 @@
     font-weight: 600;
     font-size: 1rem;
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn svg {
+    transition: transform 0.3s ease;
+  }
+
+  .btn:hover svg {
+    transform: translateY(2px);
   }
 
   .btn-primary {
@@ -88,6 +119,17 @@
   .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 30px rgba(139, 92, 246, 0.6);
+  }
+
+  .btn-secondary {
+    background: var(--secondary-color);
+    color: white;
+    box-shadow: 0 4px 20px rgba(236, 72, 153, 0.4);
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(236, 72, 153, 0.6);
   }
 
   .btn-outline {

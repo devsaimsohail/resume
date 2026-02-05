@@ -1,0 +1,76 @@
+---
+// Set your availability status here
+const isAvailable = true; // Change to false when not available
+const availabilityText = isAvailable
+  ? "Available for new projects"
+  : "Currently unavailable";
+---
+
+<div class="availability-badge" data-available={isAvailable}>
+  <span class="status-dot"></span>
+  <span class="status-text">{availabilityText}</span>
+</div>
+
+<style>
+  .availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+  }
+
+  .availability-badge[data-available="true"] {
+    border-color: rgba(34, 197, 94, 0.5);
+    background: rgba(34, 197, 94, 0.1);
+  }
+
+  .availability-badge[data-available="false"] {
+    border-color: rgba(239, 68, 68, 0.5);
+    background: rgba(239, 68, 68, 0.1);
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .availability-badge[data-available="true"] .status-dot {
+    background: rgb(34, 197, 94);
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+  }
+
+  .availability-badge[data-available="false"] .status-dot {
+    background: rgb(239, 68, 68);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+  }
+
+  .status-text {
+    color: var(--text-color);
+  }
+
+  .availability-badge[data-available="true"] .status-text {
+    color: rgb(34, 197, 94);
+  }
+
+  .availability-badge[data-available="false"] .status-text {
+    color: rgb(239, 68, 68);
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+</style>

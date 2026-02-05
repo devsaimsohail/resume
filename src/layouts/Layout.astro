@@ -1,23 +1,63 @@
 ---
 import "../styles/global.css";
+import StructuredData from "../components/StructuredData.astro";
 
 interface Props {
 	title: string;
 	description?: string;
+	image?: string;
+	url?: string;
 }
 
-const { title, description = "My professional resume and portfolio." } =
-	Astro.props;
+const {
+	title,
+	description = "Full Stack Engineer specializing in high-performance, AI-enabled digital experiences. Building scalable web applications with modern technologies.",
+	image = "/og-image.jpg", // You'll need to add this image
+	url = "https://yourportfolio.com", // Update with your actual URL
+} = Astro.props;
+
+// Only create canonical URL if site is configured
+const canonicalURL = Astro.site
+	? new URL(Astro.url.pathname, Astro.site).href
+	: url;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
+
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="author" content="Saim Sohail" />
+		<meta
+			name="keywords"
+			content="Full Stack Engineer, Web Developer, React Developer, Node.js Developer, Software Engineer, JavaScript, TypeScript, AWS, Saim Sohail"
+		/>
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={url} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={image} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={url} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={image} />
+
+		<!-- Favicon -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+
+		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -29,6 +69,8 @@ const { title, description = "My professional resume and portfolio." } =
 			type="text/css"
 			href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
 		/>
+
+		<!-- Theme Script -->
 		<script is:inline>
 			(function () {
 				const theme = localStorage.getItem("theme") || "system";
@@ -42,7 +84,9 @@ const { title, description = "My professional resume and portfolio." } =
 				}
 			})();
 		</script>
-		<title>{title}</title>
+
+		<!-- Structured Data for SEO -->
+		<StructuredData />
 	</head>
 	<body>
 		<slot />

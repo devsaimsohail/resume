@@ -1,0 +1,34 @@
+---
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Saim Sohail",
+  jobTitle: "Full Stack Engineer",
+  url: "https://yourportfolio.com", // Update with your actual URL
+  sameAs: [
+    "https://www.linkedin.com/in/saim-sohail-584a6521a/",
+    "https://github.com/devsaimsohail",
+  ],
+  email: "iamsaimsohail@gmail.com",
+  description:
+    "Full Stack Engineer specializing in high-performance, AI-enabled digital experiences. Building scalable web applications with modern technologies.",
+  knowsAbout: [
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Node.js",
+    "Ruby on Rails",
+    "AWS",
+    "Full Stack Development",
+    "Web Development",
+  ],
+  alumniOf: "GIFT University",
+  worksFor: {
+    "@type": "Organization",
+    name: "Devsloop",
+    url: "https://devslooptech.com/",
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
