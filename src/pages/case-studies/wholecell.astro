@@ -1,0 +1,558 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Contact from "../../components/Contact.astro";
+
+const project = {
+  company: "WholeCell.io",
+  client: "Devsloop",
+  role: "Software Engineer",
+  period: "2021 – 2023",
+  color: "#10b981",
+  icon: "🛒",
+  tagline:
+    "Multi-marketplace e-commerce sync engine with Amazon, Walmart & WooCommerce.",
+  overview:
+    "WholeCell.io is an inventory and order management platform designed to unify selling across multiple e-commerce marketplaces. As a core team member, I built the customer portal, integrated three major marketplace APIs, and delivered comprehensive test coverage across the platform.",
+  problem:
+    "E-commerce sellers waste enormous time manually syncing orders and inventory across Amazon, Walmart, and WooCommerce. WholeCell needed a reliable, real-time sync engine that could handle marketplace-specific quirks, rate limits, and data format differences — all without disrupting the seller's workflow.",
+  tags: [
+    "Ruby on Rails",
+    "Amazon SP API",
+    "Walmart API",
+    "WooCommerce",
+    "RSpec",
+    "E-Commerce",
+  ],
+  stack: [
+    { label: "Full-Stack", value: "Ruby on Rails", icon: "💎" },
+    { label: "Amazon", value: "Amazon Selling Partner API", icon: "📦" },
+    { label: "Walmart", value: "Walmart Marketplace API", icon: "🏪" },
+    { label: "WooCommerce", value: "WooCommerce REST API", icon: "🛍️" },
+    { label: "Testing", value: "RSpec (full coverage)", icon: "✅" },
+    { label: "Architecture", value: "OOP & Scalable Design", icon: "🏗️" },
+  ],
+  responsibilities: [
+    {
+      title: "Customer Portal",
+      desc: "Built a full customer portal where customers can place orders, track them, and process payments — the primary revenue-generating surface.",
+      icon: "🖥️",
+    },
+    {
+      title: "Amazon SP API",
+      desc: "Integrated Amazon Selling Partner API to sync a seller's orders, inventory, and fulfilment data in real-time.",
+      icon: "📦",
+    },
+    {
+      title: "Walmart Marketplace API",
+      desc: "Integrated Walmart Marketplace API to bidirectionally sync orders and inventory with Walmart's marketplace.",
+      icon: "🏪",
+    },
+    {
+      title: "WooCommerce API",
+      desc: "Integrated WooCommerce REST API to sync products, orders, and returns from WordPress-based storefronts.",
+      icon: "🛍️",
+    },
+    {
+      title: "Test Coverage",
+      desc: "Wrote comprehensive RSpec test suites covering all three integrations and added coverage for pre-existing features.",
+      icon: "✅",
+    },
+    {
+      title: "Architecture & Performance",
+      desc: "Provided OOP methodology guidance, recommended architectural improvements, and optimised system performance proactively.",
+      icon: "⚡",
+    },
+  ],
+  outcomes: [
+    { value: "3", label: "Marketplace integrations shipped" },
+    { value: "100%", label: "Test coverage on integrations" },
+    { value: "↑ Revenue", label: "Customer portal driving sales" },
+  ],
+  challenges: [
+    {
+      title: "Marketplace API Rate Limits",
+      desc: "Each marketplace's API has unique rate limits and throttling rules. I designed a shared job-queue architecture with per-marketplace backoff strategies to ensure sync reliability without hitting limits.",
+    },
+    {
+      title: "Data Normalisation Across APIs",
+      desc: "Amazon, Walmart, and WooCommerce all return orders and inventory in different formats. I built a normalisation layer that maps marketplace-specific schemas to a unified internal model, making the UI and business logic marketplace-agnostic.",
+    },
+    {
+      title: "Test Coverage for External APIs",
+      desc: "Testing marketplace integrations without making real API calls required VCR cassettes and carefully crafted factory objects to simulate real responses while keeping tests fast and deterministic.",
+    },
+  ],
+};
+---
+
+<Layout
+  title={`${project.company} Case Study | Saim Sohail`}
+  description={project.tagline}
+>
+  <Header />
+  <main>
+    <section class="cs-detail-hero" style={`--accent: ${project.color};`}>
+      <div class="container">
+        <a href="/case-studies" class="back-link">← All Case Studies</a>
+        <div class="hero-meta">
+          <span class="hero-icon">{project.icon}</span>
+          <div>
+            <p class="hero-role">{project.role} · {project.client}</p>
+            <h1 class="hero-company">{project.company}</h1>
+            <p class="hero-period">{project.period}</p>
+          </div>
+        </div>
+        <p class="hero-tagline">{project.tagline}</p>
+        <div class="hero-tags">
+          {project.tags.map((t) => <span class="htag">{t}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-body">
+      <div class="container cs-layout">
+        <div class="cs-main">
+          <div class="cs-block">
+            <h2 class="block-title">
+              <span class="block-icon">📋</span> Project Overview
+            </h2>
+            <p class="block-text">{project.overview}</p>
+          </div>
+          <div class="cs-block">
+            <h2 class="block-title">
+              <span class="block-icon">🎯</span> The Problem
+            </h2>
+            <p class="block-text">{project.problem}</p>
+          </div>
+
+          <!-- Marketplace Integration visual -->
+          <div class="cs-block">
+            <h2 class="block-title">
+              <span class="block-icon">🛍️</span> Marketplace Integrations
+            </h2>
+            <div class="marketplace-grid">
+              <div class="mp-card" style="--mp: #FF9900;">
+                <span class="mp-icon">📦</span>
+                <h3 class="mp-name">Amazon</h3>
+                <p class="mp-detail">
+                  Selling Partner API — Orders, Inventory, Fulfilment sync
+                </p>
+              </div>
+              <div class="mp-card" style="--mp: #0071CE;">
+                <span class="mp-icon">🏪</span>
+                <h3 class="mp-name">Walmart</h3>
+                <p class="mp-detail">
+                  Marketplace API — Orders, Inventory bidirectional sync
+                </p>
+              </div>
+              <div class="mp-card" style="--mp: #7f54b3;">
+                <span class="mp-icon">🛍️</span>
+                <h3 class="mp-name">WooCommerce</h3>
+                <p class="mp-detail">
+                  REST API — Products, Orders, Returns sync
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-block">
+            <h2 class="block-title">
+              <span class="block-icon">⚡</span> My Responsibilities
+            </h2>
+            <div class="resp-grid">
+              {
+                project.responsibilities.map((r) => (
+                  <div class="resp-card">
+                    <span class="resp-icon">{r.icon}</span>
+                    <div>
+                      <h3 class="resp-title">{r.title}</h3>
+                      <p class="resp-desc">{r.desc}</p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+          <div class="cs-block">
+            <h2 class="block-title">
+              <span class="block-icon">🧩</span> Key Challenges & Solutions
+            </h2>
+            <div class="challenge-list">
+              {
+                project.challenges.map((c, i) => (
+                  <div class="challenge-item">
+                    <div class="challenge-num">{i + 1}</div>
+                    <div>
+                      <h3 class="challenge-title">{c.title}</h3>
+                      <p class="challenge-desc">{c.desc}</p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+        <aside class="cs-sidebar">
+          <div class="sidebar-card">
+            <h3 class="sidebar-title">🏆 Outcomes</h3>
+            <div class="outcomes">
+              {
+                project.outcomes.map((o) => (
+                  <div class="outcome-item">
+                    <span class="outcome-value">{o.value}</span>
+                    <span class="outcome-label">{o.label}</span>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <h3 class="sidebar-title">🛠️ Tech Stack</h3>
+            <div class="stack-list">
+              {
+                project.stack.map((s) => (
+                  <div class="stack-item">
+                    <span class="stack-icon">{s.icon}</span>
+                    <div>
+                      <p class="stack-label">{s.label}</p>
+                      <p class="stack-value">{s.value}</p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+          <div class="sidebar-card sidebar-cta">
+            <p class="cta-text">
+              Need multi-marketplace e-commerce integrations?
+            </p>
+            <a href="/#contact" class="cta-btn">Let's Talk</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <Contact />
+  </main>
+</Layout>
+
+<style>
+  :root {
+    --accent: #10b981;
+  }
+  .cs-detail-hero {
+    padding-top: 140px;
+    padding-bottom: 4rem;
+    background: radial-gradient(
+      ellipse 80% 50% at 50% 0%,
+      color-mix(in srgb, var(--accent) 15%, transparent),
+      transparent 60%
+    );
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    transition: color 0.25s;
+  }
+  .back-link:hover {
+    color: var(--accent);
+  }
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-icon {
+    font-size: 3.5rem;
+    filter: drop-shadow(0 0 20px var(--accent));
+  }
+  .hero-role {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+  .hero-company {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--text-color);
+    line-height: 1.1;
+  }
+  .hero-period {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+  .hero-tagline {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 680px;
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+  }
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .htag {
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.3rem 0.85rem;
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    color: var(--accent);
+  }
+  .cs-body {
+    padding: 4rem 0 6rem;
+  }
+  .cs-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 3rem;
+    align-items: start;
+  }
+  .cs-block {
+    margin-bottom: 3rem;
+  }
+  .block-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .block-text {
+    font-size: 1.02rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+  .marketplace-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+  .mp-card {
+    padding: 1.25rem;
+    border-radius: 1rem;
+    border: 1px solid color-mix(in srgb, var(--mp) 30%, transparent);
+    background: color-mix(in srgb, var(--mp) 8%, transparent);
+    text-align: center;
+  }
+  .mp-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .mp-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.4rem;
+  }
+  .mp-detail {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .resp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+  }
+  .resp-card {
+    display: flex;
+    gap: 0.9rem;
+    padding: 1.25rem;
+    border-radius: 0.9rem;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    transition:
+      border-color 0.3s,
+      transform 0.3s;
+  }
+  .resp-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+  .resp-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .resp-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.4rem;
+  }
+  .resp-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .challenge-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .challenge-item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+  .challenge-num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    color: var(--accent);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .challenge-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.4rem;
+  }
+  .challenge-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+  .cs-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: sticky;
+    top: 100px;
+  }
+  .sidebar-card {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+  }
+  .sidebar-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .outcomes {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .outcome-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .outcome-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .outcome-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .stack-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .stack-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .stack-icon {
+    font-size: 1.25rem;
+  }
+  .stack-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .stack-value {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-color);
+  }
+  .sidebar-cta {
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--accent) 15%, transparent),
+      color-mix(in srgb, #06b6d4 10%, transparent)
+    );
+    border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+    text-align: center;
+  }
+  .cta-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: 9999px;
+    transition:
+      transform 0.3s,
+      box-shadow 0.3s;
+  }
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+  @media (max-width: 900px) {
+    .cs-layout {
+      grid-template-columns: 1fr;
+    }
+    .cs-sidebar {
+      position: static;
+    }
+    .resp-grid,
+    .marketplace-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .hero-meta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

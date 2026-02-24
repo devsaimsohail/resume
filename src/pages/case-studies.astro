@@ -1,0 +1,500 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Contact from "../components/Contact.astro";
+
+const caseStudies = [
+  {
+    slug: "rewritely",
+    company: "Rewritely",
+    client: "Devsloop",
+    role: "Sr. Software Engineer",
+    period: "2024 – 2026",
+    tagline: "AI-powered rewriting platform built from the ground up.",
+    summary:
+      "Architected and delivered a full-stack SaaS product from scratch, integrating payment gateways, third-party AI APIs, and leading a cross-functional engineering team.",
+    tags: ["NestJS", "Next.js", "MongoDB", "Stripe", "Recurly"],
+    color: "#8b5cf6",
+    icon: "✍️",
+    highlight: "From zero to production in record time",
+  },
+  {
+    slug: "billfold",
+    company: "Billfold",
+    client: "Devsloop",
+    role: "Sr. Software Engineer",
+    period: "2023 – 2024",
+    tagline: "FinTech intranet platform with complex PostgreSQL optimizations.",
+    summary:
+      "Delivered intricate FinTech intranet solutions using Ruby on Rails, drastically improving database performance via stored PostgreSQL functions.",
+    tags: ["Ruby on Rails", "PostgreSQL", "Intranet", "FinTech"],
+    color: "#06b6d4",
+    icon: "💳",
+    highlight: "Complex query optimization with stored DB functions",
+  },
+  {
+    slug: "easyllama",
+    company: "Easyllama",
+    client: "Devsloop",
+    role: "Sr. Software Engineer",
+    period: "2022 – 2023",
+    tagline: "Healthcare & compliance web portals for real-world impact.",
+    summary:
+      "Built and enhanced three critical platforms — Global Encounters, PrepMod, and UvoHealth — enabling location-based applications, vaccination scheduling, and telehealth sessions.",
+    tags: ["Ruby on Rails", "Telehealth", "Vaccination Systems", "APIs"],
+    color: "#f43f5e",
+    icon: "🏥",
+    highlight: "Three healthcare platforms, one team",
+  },
+  {
+    slug: "xinc",
+    company: "Xinc",
+    client: "Tokyo • Remote",
+    role: "Sr. Software Engineer",
+    period: "6 months (Part-time)",
+    tagline: "ChatGPT-powered conversational chatbot for a Tokyo-based client.",
+    summary:
+      "Created an intelligent chatbot using ChatGPT APIs, while optimising application performance and mentoring team members remotely.",
+    tags: ["ChatGPT API", "AI", "Performance Optimization"],
+    color: "#f59e0b",
+    icon: "🤖",
+    highlight: "AI chatbot shipped remotely for a Tokyo enterprise",
+  },
+  {
+    slug: "wholecell",
+    company: "WholeCell.io",
+    client: "Devsloop",
+    role: "Software Engineer",
+    period: "2021 – 2023",
+    tagline: "Multi-marketplace e-commerce sync engine.",
+    summary:
+      "Core team member who built a customer portal and integrated three major e-commerce platforms — Amazon SP API, Walmart Marketplace, and WooCommerce — with full test coverage.",
+    tags: ["Ruby on Rails", "Amazon SP API", "Walmart API", "WooCommerce"],
+    color: "#10b981",
+    icon: "🛒",
+    highlight: "3 marketplace integrations with 100% test coverage",
+  },
+  {
+    slug: "upcall",
+    company: "Upcall",
+    client: "Devsloop",
+    role: "Software Engineer",
+    period: "2021 – 2022",
+    tagline: "Dashboard revamp & payment system modernisation.",
+    summary:
+      "Revamped the client-facing dashboard, implemented a self-serve payment portal with Chargebee, and consolidated disparate APIs into a single Rails monolith while optimising DB performance.",
+    tags: ["Ruby on Rails", "Chargebee", "Dashboard", "Performance"],
+    color: "#ec4899",
+    icon: "📞",
+    highlight: "Full dashboard redesign + API consolidation",
+  },
+  {
+    slug: "coordinator",
+    company: "Coordinator",
+    client: "GIFT University",
+    role: "Software Engineer",
+    period: "2019 – 2020",
+    tagline: "University management dashboards for multiple stakeholders.",
+    summary:
+      "Gathered requirements from university coordinators and designed three tailored dashboards for BS and Master's programme stakeholders at GIFT University.",
+    tags: ["Requirements Gathering", "Dashboard Design", "University ERP"],
+    color: "#6366f1",
+    icon: "🎓",
+    highlight: "Three bespoke dashboards, one university",
+  },
+];
+---
+
+<Layout
+  title="Case Studies | Saim Sohail – Sr. Full Stack Engineer"
+  description="Deep-dive case studies of real-world projects: SaaS platforms, FinTech tools, healthcare portals, AI chatbots, and e-commerce integrations built by Saim Sohail."
+>
+  <Header />
+  <main>
+    <!-- Hero -->
+    <section class="cs-hero">
+      <div class="container">
+        <div class="cs-hero-badge">Real Work. Real Impact.</div>
+        <h1 class="cs-hero-title">
+          Project <span class="gradient-text">Case Studies</span>
+        </h1>
+        <p class="cs-hero-desc">
+          Seven in-depth stories showcasing the challenges I solved, the
+          technologies I wielded, and the measurable outcomes I delivered across
+          industries — FinTech, Healthcare, AI, and E-commerce.
+        </p>
+        <div class="cs-hero-stats">
+          <div class="hs">
+            <span class="hs-num">7+</span>
+            <span class="hs-label">Projects</span>
+          </div>
+          <div class="hs-divider"></div>
+          <div class="hs">
+            <span class="hs-num">6+</span>
+            <span class="hs-label">Years</span>
+          </div>
+          <div class="hs-divider"></div>
+          <div class="hs">
+            <span class="hs-num">3</span>
+            <span class="hs-label">Industries</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid -->
+    <section class="cs-grid-section">
+      <div class="container">
+        <div class="cs-grid">
+          {
+            caseStudies.map((cs, i) => (
+              <a
+                href={`/case-studies/${cs.slug}`}
+                class="cs-card"
+                style={`--card-accent: ${cs.color};`}
+              >
+                <div class="cs-card-top">
+                  <span class="cs-icon">{cs.icon}</span>
+                  <span class="cs-period">{cs.period}</span>
+                </div>
+                <div class="cs-card-body">
+                  <p class="cs-role">{cs.role}</p>
+                  <h2 class="cs-company">{cs.company}</h2>
+                  <p class="cs-tagline">{cs.tagline}</p>
+
+                  <div class="cs-highlight">
+                    <span class="cs-highlight-icon">⚡</span>
+                    {cs.highlight}
+                  </div>
+
+                  <div class="cs-tags">
+                    {cs.tags.slice(0, 3).map((tag) => (
+                      <span class="cs-tag">{tag}</span>
+                    ))}
+                    {cs.tags.length > 3 && (
+                      <span class="cs-tag cs-tag-more">
+                        +{cs.tags.length - 3}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div class="cs-card-footer">
+                  <span class="cs-read-more">
+                    Read Case Study
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+  </main>
+</Layout>
+
+<style>
+  /* ── Hero ─────────────────────────────────────────────── */
+  .cs-hero {
+    padding-top: 140px;
+    padding-bottom: 5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cs-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      rgba(139, 92, 246, 0.15),
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  .cs-hero-badge {
+    display: inline-block;
+    padding: 0.35rem 1.1rem;
+    background: rgba(139, 92, 246, 0.12);
+    border: 1px solid rgba(139, 92, 246, 0.35);
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8b5cf6;
+    margin-bottom: 1.5rem;
+  }
+
+  .cs-hero-title {
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+    color: var(--text-color);
+  }
+
+  .cs-hero-desc {
+    max-width: 650px;
+    margin: 0 auto 3rem;
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .cs-hero-stats {
+    display: inline-flex;
+    align-items: center;
+    gap: 2.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    border-radius: 9999px;
+    padding: 1rem 2.5rem;
+  }
+
+  .hs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+  }
+
+  .hs-num {
+    font-size: 1.6rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hs-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .hs-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--glass-border);
+  }
+
+  /* ── Grid ─────────────────────────────────────────────── */
+  .cs-grid-section {
+    padding: 1rem 0 6rem;
+  }
+
+  .cs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+    gap: 1.75rem;
+  }
+
+  /* ── Card ─────────────────────────────────────────────── */
+  .cs-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.25rem;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    gap: 1.25rem;
+    text-decoration: none;
+    color: var(--text-color);
+    transition:
+      transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cs-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--card-accent),
+      color-mix(in srgb, var(--card-accent) 60%, transparent)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .cs-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at 80% 0%,
+      color-mix(in srgb, var(--card-accent) 8%, transparent),
+      transparent 60%
+    );
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .cs-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--card-accent);
+    box-shadow: 0 20px 60px -10px
+      color-mix(in srgb, var(--card-accent) 30%, transparent);
+  }
+
+  .cs-card:hover::before,
+  .cs-card:hover::after {
+    opacity: 1;
+  }
+
+  .cs-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cs-icon {
+    font-size: 2rem;
+    line-height: 1;
+    filter: drop-shadow(0 0 8px var(--card-accent));
+  }
+
+  .cs-period {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+  }
+
+  .cs-card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .cs-role {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--card-accent);
+  }
+
+  .cs-company {
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: var(--text-color);
+    line-height: 1.15;
+  }
+
+  .cs-tagline {
+    font-size: 0.96rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .cs-highlight {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-color);
+    background: color-mix(in srgb, var(--card-accent) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--card-accent) 25%, transparent);
+    border-radius: 0.5rem;
+    padding: 0.6rem 0.9rem;
+    margin-top: 0.25rem;
+  }
+
+  .cs-highlight-icon {
+    font-size: 1rem;
+  }
+
+  .cs-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+  }
+
+  .cs-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.2rem 0.65rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--glass-border);
+    color: var(--text-muted);
+  }
+
+  .cs-tag-more {
+    color: var(--card-accent);
+    border-color: color-mix(in srgb, var(--card-accent) 30%, transparent);
+    background: color-mix(in srgb, var(--card-accent) 8%, transparent);
+  }
+
+  .cs-card-footer {
+    border-top: 1px solid var(--glass-border);
+    padding-top: 1.1rem;
+    margin-top: 0.25rem;
+  }
+
+  .cs-read-more {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--card-accent);
+    transition: gap 0.3s ease;
+  }
+
+  .cs-card:hover .cs-read-more {
+    gap: 0.85rem;
+  }
+
+  /* ── Responsive ───────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .cs-hero {
+      padding-top: 120px;
+      padding-bottom: 3rem;
+    }
+
+    .cs-hero-stats {
+      gap: 1.5rem;
+      padding: 0.75rem 1.5rem;
+    }
+
+    .cs-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
